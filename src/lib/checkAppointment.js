@@ -3,7 +3,8 @@ var options = { desiredCapabilities: { browserName: 'chrome' } };
 var client = webdriverio.remote(options);
 var testConf = require('./../config.json').testConf;
 var cheerio = require('cheerio');
-var MONTHS_TO_CHECK = 4
+
+const MONTHS_TO_CHECK = 2
 
 client
   .init()
@@ -30,22 +31,26 @@ client
     var availableAppointments = []
 
     for(var i=0; i < MONTHS_TO_CHECK; i++){
-      client.getHTML('body').then((html) => {
+      client.getHTML('body')
+        .then((html) => {
+            var $ = cheerio.load(html),
+                cells = $('.CELL'),
+                month = $('#month').find('span').text(),
+                year = $('#year').find('span').text();
 
-        var $ = cheerio.load(html),
-            cells = $('.CELL'),
-            month = $('#month').find('span').text(),
-            year = $('#year').find('span').text(),
+            cells.map(function(){
+              if($(this).find('div > span').text() === '1'){ // 1 in span == available appointment
+                var day = $(this).find('a > span').text();
+                var date = moment(Date.parse(day + '-' + month + '-' + year)).locale('de').format('D/MM/YYYY');
+                console.log(date);
+                // availableAppointments.push(date)
+            	}
+            });
+        })
 
-        cells.map(function(){
-          if($(this).find('div > span').text() === '1'){ // 1 in span == available appointment
-            var day = $(this).find('a > span').text();
-            var date = moment(Date.parse(day + '-' + month + '-' + year)).locale('de').format('D/MM/YYYY');
-            availableAppointments.push(date)
-        	}
-        });
-
-      })
+        .click('#labnextMonth')
     }
+
+    // console.log(availableAppointments);
   })
   // .end();
