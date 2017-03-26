@@ -1,10 +1,31 @@
+var q = require('q');
 var webdriverio = require('webdriverio');
 var options = { desiredCapabilities: { browserName: 'chrome' } };
 var client = webdriverio.remote(options);
 var testConf = require('./../config.json').testConf;
 var cheerio = require('cheerio');
+var parseMonthString = require('./util.js').parseMonthString;
 
 const MONTHS_TO_CHECK = 2
+let availableAppointments = []
+
+let setFreeAppoitments = (html) => {
+  var $ = cheerio.load(html),
+      cells = $('.CELL'),
+      month = parseMonthString($('#month').find('span').text()),
+      year = $('#year').find('span').text();
+
+  cells.map(function(){
+    console.log($(this).find('div > span').text());
+    if($(this).find('div > span').text() === '1'){ // 1 in span == available appointment
+
+      var day = $(this).find('a > span').text();
+      var date = day + '-' + month + '-' + year;
+      console.log(date);
+      availableAppointments.push(date)
+    }
+  });
+}
 
 client
   .init()
@@ -26,31 +47,8 @@ client
   .setValue('#tfEtNr', '12345') // Nummer der Aufenthaltserlaubnis
   .click('#txtNextpage') // double click on next button...bug?
   .click('#txtNextpage')
-  .then(function(){
+  .getHTML('body')
+    .then((html) => {
 
-    var availableAppointments = []
-
-    for(var i=0; i < MONTHS_TO_CHECK; i++){
-      client.getHTML('body')
-        .then((html) => {
-            var $ = cheerio.load(html),
-                cells = $('.CELL'),
-                month = $('#month').find('span').text(),
-                year = $('#year').find('span').text();
-
-            cells.map(function(){
-              if($(this).find('div > span').text() === '1'){ // 1 in span == available appointment
-                var day = $(this).find('a > span').text();
-                var date = moment(Date.parse(day + '-' + month + '-' + year)).locale('de').format('D/MM/YYYY');
-                console.log(date);
-                // availableAppointments.push(date)
-            	}
-            });
-        })
-
-        .click('#labnextMonth')
-    }
-
-    // console.log(availableAppointments);
-  })
-  // .end();
+    })
+  .click('#labnextMonth')
