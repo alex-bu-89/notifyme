@@ -1,32 +1,34 @@
 const webdriverio = require('webdriverio');
+const cheerio = require('cheerio');
 const config = require('config');
 
 const options = { desiredCapabilities: { browserName: 'chrome' } };
 const client = webdriverio.remote(options);
 const logger = require('../../config/winston');
+const { parseMonthString } = require('./util');
 
 // const { parseMonthString } = require('./util.js');
 //
 // const MONTHS_TO_CHECK = 2;
-// const availableAppointments = [];
+const availableAppointments = [];
 
-// let setFreeAppoitments = (html) => {
-//   const $ = cheerio.load(html),
-//     cells = $('.CELL'),
-//     month = parseMonthString($('#month').find('span').text()),
-//     year = $('#year').find('span').text();
-//
-//   cells.map(function() {
-//     console.log($(this).find('div > span').text());
-//     if ($(this).find('div > span').text() === '1') {
-//
-//       const day = $(this).find('a > span').text();
-//       const date = day + '-' + month + '-' + year;
-//       console.log(date);
-//       availableAppointments.push(date)
-//     }
-//   });
-// }
+const getFreeAppoitments = (html) => {
+  logger.info('getting free appoitments');
+
+  const $ = cheerio.load(html);
+  const cells = $('.CELL');
+  const month = parseMonthString($('#month').find('span').text());
+  const year = $('#year').find('span').text();
+
+  cells.map(() => {
+    if ($(this).find('div > span').text() === '1') {
+      const day = $(this).find('a > span').text();
+      const date = `${day} - ${month} - ${year}`;
+      logger.info(date);
+      availableAppointments.push(date);
+    }
+  });
+};
 
 logger.info('Start webdriverio');
 client
@@ -51,7 +53,7 @@ client
   .click('#txtNextpage')
   .getHTML('body')
   .then((html) => {
-    logger.info('Html result');
-    logger.debug(html);
+    getFreeAppoitments(html);
+    logger.info('availableAppointments: ', availableAppointments);
   })
   .click('#labnextMonth');

@@ -6,6 +6,7 @@ const myFormat = printf(info => {
 });
 
 module.exports = createLogger({
+  level: 'debug',
   transports: [new transports.Console()],
   format: combine(
     colorize({ all: true }),

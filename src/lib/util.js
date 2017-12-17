@@ -62,6 +62,6 @@ exports.parseMonthString = function parseMonthString(month) {
 			return '12'
 			break;
 		default:
-			return 01
+			return '01'
 	}
-}
+};
