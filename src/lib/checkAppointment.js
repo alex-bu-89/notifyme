@@ -4,6 +4,7 @@ const config = require('config');
 const options = { desiredCapabilities: { browserName: 'chrome' } };
 const client = webdriverio.remote(options);
 const logger = require('../../config/winston');
+
 // const { parseMonthString } = require('./util.js');
 //
 // const MONTHS_TO_CHECK = 2;
@@ -26,31 +27,31 @@ const logger = require('../../config/winston');
 //     }
 //   });
 // }
+
 logger.info('Start webdriverio');
-logger.info(logger);
-// client
-//   .init()
-//   .url(config.get('berlinde.url'))
-//   .click('#btnTerminBuchen')
-//   .selectByValue('#cobStaat', 160) // Staatsangehörigkeit
-//   .selectByValue('#cobFamAngInBerlin', 'Nein') // Familienangehörigen in EU Ja / Nein
-//   .selectByValue('#cobAnliegen', 305304) // Anliegen *
-//   .click('#cbZurKenntnis')
-//   .click('#labNextpage')
-//   .setValue('#tfFirstName', 'Test') // Vorname
-//   .setValue('#tfLastName', 'Test') // Nachname
-//   .selectByValue('#cobGebDatumTag', 1) // Geb. Datum
-//   .selectByValue('#cobGebDatumMonat', 1)
-//   .setValue('#tfGebDatumJahr', 2000)
-//   .selectByValue('#cobVPers', 1) // Anzahl der Personen
-//   .setValue('#tfMail', 'test@gmail.com') // Email
-//   .selectByValue('#cobGenehmigungBereitsVorhanden', 'Ja') // Besitzen Sie bereits eine Aufenthaltserlaubnis ?
-//   .setValue('#tfEtNr', '12345') // Nummer der Aufenthaltserlaubnis
-//   .click('#txtNextpage') // double click on next button...bug?
-//   .click('#txtNextpage')
-//   .getHTML('body')
-//   .then((html) => {
-//     logger.info('Html result');
-//     logger.debug(html);
-//   })
-//   .click('#labnextMonth');
+client
+  .init()
+  .url(config.get('berlinde.url'))
+  .click('#btnTerminBuchen')
+  .selectByValue('#cobStaat', 160) // Staatsangehörigkeit
+  .selectByValue('#cobFamAngInBerlin', 'Nein') // Familienangehörigen in EU Ja / Nein
+  .selectByValue('#cobAnliegen', 305304) // Anliegen *
+  .click('#cbZurKenntnis')
+  .click('#labNextpage')
+  .setValue('#tfFirstName', 'Test') // Vorname
+  .setValue('#tfLastName', 'Test') // Nachname
+  .selectByValue('#cobGebDatumTag', 1) // Geb. Datum
+  .selectByValue('#cobGebDatumMonat', 1)
+  .setValue('#tfGebDatumJahr', 2000)
+  .selectByValue('#cobVPers', 1) // Anzahl der Personen
+  .setValue('#tfMail', 'test@gmail.com') // Email
+  .selectByValue('#cobGenehmigungBereitsVorhanden', 'Ja') // Besitzen Sie bereits eine Aufenthaltserlaubnis ?
+  .setValue('#tfEtNr', '12345') // Nummer der Aufenthaltserlaubnis
+  .click('#txtNextpage') // double click on next button...bug?
+  .click('#txtNextpage')
+  .getHTML('body')
+  .then((html) => {
+    logger.info('Html result');
+    logger.debug(html);
+  })
+  .click('#labnextMonth');
