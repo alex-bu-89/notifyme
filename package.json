@@ -1,48 +1,25 @@
 {
   "name": "auslaenderbehoerde-termin",
-  "version": "0.1.1",
+  "version": "0.0.1",
   "description": "Auslaenderbehoerde Termin",
-  "main": "dist",
+  "main": "",
   "scripts": {
-    "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
-    "build": "babel src -s -D -d dist --presets es2015,stage-0",
-    "start": "node dist",
-    "prestart": "npm run -s build",
-    "test": "eslint src"
-  },
-  "eslintConfig": {
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 7,
-      "sourceType": "module"
-    },
-    "env": {
-      "node": true
-    },
-    "rules": {
-      "no-console": 0,
-      "no-unused-vars": 1
-    }
+    "start": "npm run selenium:start; npm run start:check",
+    "start:check": "node ./src/lib/checkAppointment.js",
+    "selenium:start": "selenium-standalone start > /dev/null 2>&1 &",
+    "preselenium:start": "selenium-standalone install",
+    "poststart": "pkill -f selenium-standalone",
+    "lint": "eslint ./src/**/*.js"
   },
   "dependencies": {
-    "body-parser": "^1.13.3",
-    "cheerio": "^0.22.0",
-    "compression": "^1.5.2",
-    "cors": "^2.7.1",
-    "express": "^4.13.3",
-    "moment": "^2.18.1",
-    "morgan": "^1.8.0",
-    "q": "^1.5.0",
-    "resource-router-middleware": "^0.6.0",
-    "selenium-standalone": "^6.1.0",
-    "webdriverio": "^4.6.2"
+    "config": "^1.28.1",
+    "selenium-standalone": "^6.12.0",
+    "webdriverio": "^4.9.11",
+    "winston": "^3.0.0-rc1"
   },
   "devDependencies": {
-    "babel-cli": "^6.9.0",
-    "babel-core": "^6.9.0",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-stage-0": "^6.5.0",
-    "eslint": "^3.1.1",
-    "nodemon": "^1.9.2"
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
   }
 }

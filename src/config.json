@@ -1,8 +1,0 @@
-{
-	"port": 8080,
-	"bodyLimit": "100kb",
-	"corsHeaders": ["Link"],
-	"testConf": {
-		"startUrl": "https://formular.berlin.de/xima-forms-29/get/14630336979490000?mandantid=/OTVBerlin_LABO_XIMA/000-01/instantiationTasks.properties"
-	}
-}
