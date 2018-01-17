@@ -2,7 +2,6 @@
   "name": "auslaenderbehoerde-termin",
   "version": "0.0.1",
   "description": "Auslaenderbehoerde Termin",
-  "main": "",
   "scripts": {
     "start": "npm run selenium:start; npm run start:check",
     "start:check": "node ./src/lib/checkAppointment.js",
