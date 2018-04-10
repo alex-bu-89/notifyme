@@ -2,8 +2,8 @@ const webdriverio = require('webdriverio');
 const cheerio = require('cheerio');
 const config = require('config');
 
-const options = { desiredCapabilities: { browserName: 'chrome' } };
-// const options = { desiredCapabilities: { browserName: 'phantomjs' } };
+// const options = { desiredCapabilities: { browserName: 'chrome' } };
+const options = { desiredCapabilities: { browserName: 'phantomjs' } };
 const client = webdriverio.remote(options);
 const logger = require('../../config/winston');
 const { parseMonthString } = require('./util');
