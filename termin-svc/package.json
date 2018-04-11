@@ -1,30 +1,22 @@
 {
-  "name": "koa-starter",
+  "name": "termin-svc",
   "version": "2.0.0",
-  "description": "A starter kit for a slightly opinionated koa project.",
-  "main": "index.js",
+  "description": "Get available appointments at aliens authority in Berlin",
+  "main": "./src/index.js",
   "scripts": {
-    "start": "./node_modules/.bin/nodemon -e js,hbs ./index.js",
-    "production": "node index.js",
+    "start": "./node_modules/.bin/nodemon -e js,hbs ./src/index.js",
+    "production": "node ./src/index.js",
     "test": "./node_modules/.bin/eslint ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/snollygolly/koa-starter.git"
+    "url": "git@github.com:alex-bu-89/auslaenderbehoerde-termin.git"
   },
   "keywords": [
-    "koa",
-    "starter",
-    "starter-kit",
-    "handlebars",
-    "passport"
+    "koa"
   ],
-  "author": "snollygolly (@snollygolly)",
+  "author": "Alexander Buyanov",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/snollygolly/koa-starter/issues"
-  },
-  "homepage": "https://github.com/snollygolly/koa-starter#readme",
   "dependencies": {
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
@@ -33,13 +25,10 @@
     "koa-passport": "^4.0.1",
     "koa-router": "^7.2.1",
     "koa-session": "^5.5.0",
-    "koa-static": "^4.0.1",
-    "passport-github": "^1.0.0"
+    "koa-static": "^4.0.1"
   },
   "devDependencies": {
     "eslint": "^4.9.0",
-    "nodemon": "^1.12.1",
-    "shipit-cli": "^3.0.0",
-    "shipit-deploy": "^2.4.0"
+    "nodemon": "^1.12.1"
   }
 }

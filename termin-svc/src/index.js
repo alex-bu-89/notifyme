@@ -1,6 +1,6 @@
 "use strict";
 
-const config = require("./config.json");
+const config = require("../config/default.json");
 
 const Koa = require("koa");
 const hbs = require("koa-hbs");
@@ -18,10 +18,7 @@ exports.app = app;
 exports.passport = passport;
 
 // the auth model for passport support
-require("./models/auth");
-
-// misc handlebars helpers
-require("./helpers/handlebars");
+// require("./models/auth");
 
 // trust proxy
 app.proxy = true;

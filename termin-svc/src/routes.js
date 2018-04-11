@@ -1,6 +1,6 @@
 "use strict";
 
-const config = require("./config.json");
+const config = require("../config/default.json");
 
 const app = require("./index.js").app;
 const passport = require("./index.js").passport;

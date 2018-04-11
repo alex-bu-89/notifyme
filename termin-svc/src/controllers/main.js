@@ -1,6 +1,6 @@
 "use strict";
 
-const config = require("../config.json");
+const config = require("../../config/default.json");
 
 let user = null;
 
