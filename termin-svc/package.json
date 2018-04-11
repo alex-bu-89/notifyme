@@ -1,0 +1,45 @@
+{
+  "name": "koa-starter",
+  "version": "2.0.0",
+  "description": "A starter kit for a slightly opinionated koa project.",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon -e js,hbs ./index.js",
+    "production": "node index.js",
+    "test": "./node_modules/.bin/eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snollygolly/koa-starter.git"
+  },
+  "keywords": [
+    "koa",
+    "starter",
+    "starter-kit",
+    "handlebars",
+    "passport"
+  ],
+  "author": "snollygolly (@snollygolly)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snollygolly/koa-starter/issues"
+  },
+  "homepage": "https://github.com/snollygolly/koa-starter#readme",
+  "dependencies": {
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-hbs": "^1.0.0",
+    "koa-mount": "^3.0.0",
+    "koa-passport": "^4.0.1",
+    "koa-router": "^7.2.1",
+    "koa-session": "^5.5.0",
+    "koa-static": "^4.0.1",
+    "passport-github": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "nodemon": "^1.12.1",
+    "shipit-cli": "^3.0.0",
+    "shipit-deploy": "^2.4.0"
+  }
+}
