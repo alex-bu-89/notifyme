@@ -1,15 +1,7 @@
-"use strict";
+'use strict';
 
-const config = require("../../config/default.json");
-
-let user = null;
+const config = require('../../config/default.json');
 
 module.exports.index = async(ctx) => {
-	if (ctx.isAuthenticated()) {
-		user = ctx.session.passport.user;
-	}
-	await ctx.render("index", {
-		title: config.site.name,
-		user: user
-	});
+	ctx.response.body = 'index';
 };

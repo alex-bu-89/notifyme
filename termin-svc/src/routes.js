@@ -18,7 +18,6 @@ router.get("/", main.index);
 // for passport
 router.get("/login", account.login);
 router.get("/logout", account.logout);
-router.get("/account", account.index);
 
 // you can add as many strategies as you want
 router.get("/auth/github",

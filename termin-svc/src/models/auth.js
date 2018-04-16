@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-const passport = require("../index.js").passport;
-const config = require("../config.json");
+const passport = require('../index.js').passport;
+const config = require('../config.json');
 
 passport.serializeUser((user, done) => {
 	done(null, user);
@@ -11,9 +11,9 @@ passport.deserializeUser((user, done) => {
 	done(null, user);
 });
 
-const GithubStrategy = require("passport-github").Strategy;
+const GithubStrategy = require('passport-github').Strategy;
 // if we have a port other than 80, add it to our callback url
-let port = "";
+let port = '';
 if (config.site.port !== 80) {
 	port = `:${config.site.port}`;
 }
