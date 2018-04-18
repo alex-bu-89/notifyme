@@ -10,7 +10,7 @@ const main = require('./controllers/main.js');
 router.get('/', main.index);
 
 // you can add as many strategies as you want
-router.get('/auth/github', passport.authenticate('github'));
+// router.get('/auth/github', passport.authenticate('github'));
 
 router.get(
   '/auth/github/callback',
