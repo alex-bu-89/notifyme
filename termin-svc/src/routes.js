@@ -5,15 +5,9 @@ const Router = require('koa-router');
 const router = new Router();
 
 const main = require('./controllers/main.js');
-const account = require('./controllers/account.js');
 
 // routes
-
 router.get('/', main.index);
-
-// for passport
-router.get('/login', account.login);
-router.get('/logout', account.logout);
 
 // you can add as many strategies as you want
 router.get('/auth/github', passport.authenticate('github'));
