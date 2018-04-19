@@ -5,6 +5,7 @@
   "main": "./src/index.js",
   "scripts": {
     "start": "./node_modules/.bin/nodemon -e js ./src/index.js",
+    "prestart": "npm run lint",
     "production": "node ./src/index.js",
     "lint": "./node_modules/.bin/eslint ./src/"
   },
@@ -24,7 +25,8 @@
     "koa-passport": "^4.0.1",
     "koa-router": "^7.4.0",
     "koa-session": "^5.8.1",
-    "koa-static": "^4.0.2"
+    "koa-static": "^4.0.2",
+    "winston": "^3.0.0-rc4"
   },
   "devDependencies": {
     "eslint": "^4.19.1",

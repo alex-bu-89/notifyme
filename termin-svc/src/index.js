@@ -1,4 +1,5 @@
 const config = require('../config/default.json');
+const logger = require('../config/logger');
 
 const Koa = require('koa');
 
@@ -44,7 +45,7 @@ app.use(async (ctx, next) => {
 
 require('./routes');
 
-console.log(`${config.site.name} is now listening on port ${config.site.port}`);
+logger.info(`${config.site.name} is now listening on port ${config.site.port}`);
 app.listen(config.site.port);
 
 process.on('SIGINT', () => {
