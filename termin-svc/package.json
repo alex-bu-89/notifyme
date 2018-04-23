@@ -18,6 +18,7 @@
   "author": "Alexander Buyanov",
   "license": "ISC",
   "dependencies": {
+    "config": "^1.30.0",
     "koa": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
     "koa-mount": "^3.0.0",

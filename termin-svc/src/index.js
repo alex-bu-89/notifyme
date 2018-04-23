@@ -1,4 +1,4 @@
-const config = require('../config/default.json');
+const config = require('config');
 const logger = require('../config/logger');
 
 const Koa = require('koa');
@@ -20,7 +20,7 @@ exports.passport = passport;
 app.proxy = true;
 
 // sessions
-app.keys = [config.site.secret];
+app.keys = [config.get('site.secret')];
 app.use(session(app));
 
 // body parser
@@ -45,8 +45,8 @@ app.use(async (ctx, next) => {
 
 require('./routes');
 
-logger.info(`${config.site.name} is now listening on port ${config.site.port}`);
-app.listen(config.site.port);
+logger.info(`${config.get('site.name')} is now listening on port ${config.get('site.port')}`);
+app.listen(config.get('site.port'));
 
 process.on('SIGINT', () => {
   process.exit();
