@@ -10,16 +10,20 @@ module.exports.get = async (ctx) => {
   });
 
   const status = await page.open(config.get('startUrl'));
-  const button = await page.evaluate(() => {
-    return document.getElementById('btnTerminBuchen').textContent;
-  });
+  // const button = await page.evaluate(function() {
+  //   return document.getElementById('foo').innerHTML;
+  // }).then(function(html){
+  //   console.log(html);
+  // });
 
   // const content = await page.property('content');
+
+  // console.log('------>', content);
 
   await instance.exit();
 
   ctx.response.body = {
     status: 200,
-    data: JSON.stringify(button),
+    data: 'working',
   };
 };

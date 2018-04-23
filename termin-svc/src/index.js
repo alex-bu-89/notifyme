@@ -20,7 +20,7 @@ exports.passport = passport;
 app.proxy = true;
 
 // sessions
-app.keys = [config.get('site.secret')];
+app.keys = [config.get('secret')];
 app.use(session(app));
 
 // body parser
@@ -36,17 +36,17 @@ app.use(async (ctx, next) => {
     await next();
   } catch (err) {
     ctx.status = err.status || 500;
-    await ctx.render('error', {
+    ctx.response.body = {
       message: err.message,
-      error: {},
-    });
+      error: err,
+    };
   }
 });
 
 require('./routes');
 
-logger.info(`${config.get('site.name')} is now listening on port ${config.get('site.port')}`);
-app.listen(config.get('site.port'));
+logger.info(`${config.get('name')} is now listening on port ${config.get('port')}`);
+app.listen(config.get('port'));
 
 process.on('SIGINT', () => {
   process.exit();

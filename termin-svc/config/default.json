@@ -1,15 +1,13 @@
 {
-  "site":{
-    "port": 5000,
-    "name": "Termin service",
-    "secret": "some-secret",
-    "oauth": {
-      "host": "http://127.0.0.1",
-      "github": {
-        "clientID": "OAUTH CLIENT ID FOR GITHUB",
-        "clientSecret": "OAUTH CLIENT SECRET FOR GITHUB"
-      }
-    },
-    "startUrl": "https://formular.berlin.de/xima-forms-29/get/14963116144270000?mandantid=/OTVBerlin_LABO_XIMA/000-01/instantiationTasks.properties"
-  }
+  "port": 5000,
+  "name": "Termin service",
+  "secret": "some-secret",
+  "oauth": {
+    "host": "http://127.0.0.1",
+    "github": {
+      "clientID": "OAUTH CLIENT ID FOR GITHUB",
+      "clientSecret": "OAUTH CLIENT SECRET FOR GITHUB"
+    }
+  },
+  "startUrl": "https://formular.berlin.de/xima-forms-29/get/14963116144270000?mandantid=/OTVBerlin_LABO_XIMA/000-01/instantiationTasks.properties"
 }
