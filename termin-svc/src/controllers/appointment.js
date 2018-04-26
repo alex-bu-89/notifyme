@@ -12,6 +12,23 @@ module.exports.get = async (ctx) => {
   client
     .init()
     .url(config.get('startUrl'))
+    .click('#btnTerminBuchen')
+    .selectByValue('#cobStaat', 160) // Staatsangehörigkeit
+    .selectByValue('#cobFamAngInBerlin', 'Nein') // Familienangehörigen in EU Ja / Nein
+    .selectByValue('#cobAnliegen', 305304) // Anliegen *
+    .click('#cbZurKenntnis')
+    .click('#labNextpage')
+    .setValue('#tfFirstName', 'Test') // Vorname
+    .setValue('#tfLastName', 'Test') // Nachname
+    .selectByValue('#cobGebDatumTag', 1) // Geb. Datum
+    .selectByValue('#cobGebDatumMonat', 1)
+    .setValue('#tfGebDatumJahr', 2000)
+    .selectByValue('#cobVPers', 1) // Anzahl der Personen
+    .setValue('#tfMail', 'test@gmail.com') // Email
+    .selectByValue('#cobGenehmigungBereitsVorhanden', 'Ja') // Besitzen Sie bereits eine Aufenthaltserlaubnis ?
+    .setValue('#tfEtNr', '12345') // Nummer der Aufenthaltserlaubnis
+    .click('#txtNextpage') // double click on next button...bug?
+    .click('#txtNextpage')
     .getHTML('body')
     .then((html) => {
       logger.info(html);
@@ -21,6 +38,7 @@ module.exports.get = async (ctx) => {
         data: 'working',
       };
     })
+    // .end()
     .catch((error) => {
       logger.error(error);
       throw error;
