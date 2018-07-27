@@ -4,7 +4,7 @@ const main = require('./controllers/main');
 const appointment = require('./controllers/appointment');
 
 const router = new Router({
-  prefix: '/v1',
+  prefix: '/api/v1',
 });
 
 // routes
