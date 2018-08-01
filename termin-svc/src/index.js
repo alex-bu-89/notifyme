@@ -13,9 +13,6 @@ const app = new Koa();
 exports.app = app;
 exports.passport = passport;
 
-// the auth model for passport support
-// require('./models/auth');
-
 // trust proxy
 app.proxy = true;
 
@@ -30,7 +27,7 @@ app.use(bodyParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Error handling middleware
+// error handling middleware
 app.use(async (ctx, next) => {
   try {
     await next();
