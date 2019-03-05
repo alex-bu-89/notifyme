@@ -19,21 +19,21 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "config": "^3.0.0",
-    "koa": "^2.5.0",
-    "koa-bodyparser": "^4.2.0",
+    "config": "^3.0.1",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
     "koa-mount": "^4.0.0",
-    "koa-passport": "^4.0.1",
+    "koa-passport": "^4.1.1",
     "koa-router": "^7.4.0",
-    "koa-session": "^5.8.1",
+    "koa-session": "^5.10.1",
     "koa-static": "^5.0.0",
-    "webdriverio": "^5.0.0",
-    "winston": "^3.0.0-rc4"
+    "webdriverio": "^5.7.0",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
-    "eslint": "^5.2.0",
-    "eslint-config-airbnb-base": "^13.0.0",
-    "eslint-plugin-import": "^2.11.0",
-    "nodemon": "^1.17.3"
+    "eslint": "^5.15.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "nodemon": "^1.18.10"
   }
 }
