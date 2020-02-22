@@ -2,7 +2,6 @@
   "groups": {
     "default": {
       "packages": [
-        "_old/package.json",
         "termin-svc/package.json"
       ]
     }
