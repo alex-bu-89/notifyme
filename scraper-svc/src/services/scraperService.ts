@@ -17,11 +17,19 @@ async function getTermins() {
         await page.click('#btnTerminBuchen');
 
         await page.waitForSelector('#cobStaat', {visible: true});
+
+        await page.evaluate(() => {
+            const element: HTMLSelectElement = document.querySelector('#cobStaat');
+            const option: HTMLOptionElement = document.querySelector('#cobStaat > option[value="160"]');
+            const event: any = new Event('change', { bubbles: true });
+
+            option.selected = true;
+            event.simulated = true;
+            element.dispatchEvent(event);
+        });
+
         // await page.click('#cobStaat');
         // await page.waitFor(1000);
-
-        const selectElem = await page.$('#cobStaat');
-        await selectElem.type('Russische Föderation');
 
         await page.evaluate(() => {debugger;});
         // await page.select('#cobStaat', '160');
