@@ -28,6 +28,23 @@ async function getTermins() {
             element.dispatchEvent(event);
         });
 
+        // /**
+        //  * Set value on a select element
+        //  * @param {string} value
+        //  * @returns {Promise<Undefined>}
+        //  */
+        // ElementHandle.prototype.select = async function( value ) {
+        //     await this._page.evaluateHandle( ( el, value ) => {
+        //         const event = new Event( "change", { bubbles: true });
+        //         event.simulated = true;
+        //         el.querySelector( `option[value="${ value }"]` ).selected = true;
+        //         el.dispatchEvent( event );
+        //     }, this, value );
+        // };
+
+        // const combobox= await page.$('select');
+        // await combobox.select("optionFoo");
+
         // await page.click('#cobStaat');
         // await page.waitFor(1000);
 
