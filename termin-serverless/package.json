@@ -7,11 +7,19 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "source-map-support": "^0.5.10"
+    "@serverless-chrome/lambda": "^1.0.0-55",
+    "chrome-aws-lambda": "^2.1.1",
+    "puppeteer": "^2.1.1",
+    "serverless-offline": "^6.0.0",
+    "serverless-plugin-chrome": "^1.0.0-55.3",
+    "source-map-support": "^0.5.10",
+    "superagent": "^5.2.2"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.17",
     "@types/node": "^10.12.18",
+    "@types/puppeteer": "^2.0.1",
+    "chrome-launcher": "^0.13.0",
     "fork-ts-checker-webpack-plugin": "^3.0.1",
     "serverless-webpack": "^5.2.0",
     "ts-loader": "^5.3.3",
