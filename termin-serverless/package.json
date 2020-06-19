@@ -10,7 +10,7 @@
     "@serverless-chrome/lambda": "^1.0.0-55",
     "chrome-aws-lambda": "^3.1.1",
     "puppeteer": "^3.1.0",
-    "serverless-offline": "^6.2.0",
+    "serverless-offline": "^6.3.0",
     "serverless-plugin-chrome": "^1.0.0-55.3",
     "source-map-support": "^0.5.19",
     "superagent": "^5.2.2"
