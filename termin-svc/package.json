@@ -30,7 +30,7 @@
     "log4js": "^6.3.0",
     "mongoose": "^5.9.16",
     "pm2": "^4.4.0",
-    "puppeteer": "^3.2.0",
+    "puppeteer": "^3.3.0",
     "rate-limiter-flexible": "^2.1.6",
     "snyk": "^1.334.0"
   },
