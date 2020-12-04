@@ -1,9 +1,26 @@
-# package directories
-node_modules
-jspm_packages
+dist/
+www/
+loader/
 
-# Serverless directories
-.serverless
+*~
+*.sw[mnpcod]
+*.log
+*.lock
+*.tmp
+*.tmp.*
+log.txt
+*.sublime-project
+*.sublime-workspace
 
-# Webpack directories
-.webpack
+.stencil/
+.idea/
+.vscode/
+.sass-cache/
+.versions/
+node_modules/
+$RECYCLE.BIN/
+
+.DS_Store
+Thumbs.db
+UserInterfaceState.xcuserstate
+.env
