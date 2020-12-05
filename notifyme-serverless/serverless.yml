@@ -20,6 +20,7 @@ custom:
     flags:
       - --window-size=1280,1696
       - --hide-scrollbars
+      - --no-sandbox
       # - --headless
 
 package:
