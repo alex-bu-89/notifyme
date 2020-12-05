@@ -1,10 +1,12 @@
 import launchChrome from '@serverless-chrome/lambda';
-import request from 'superagent';
+import superagent from 'superagent';
 
-module.exports.getChrome = async () => {
-  const chrome = await launchChrome();
+export async function getChrome() {
+  const chrome = await launchChrome({
+    flags: ['--window-size=1280,1696', '--hide-scrollbars'],
+  });
 
-  const response = await request
+  const response = await superagent
     .get(`${chrome.url}/json/version`)
     .set('Content-Type', 'application/json');
 
@@ -14,4 +16,4 @@ module.exports.getChrome = async () => {
     endpoint,
     instance: chrome,
   };
-};
+}

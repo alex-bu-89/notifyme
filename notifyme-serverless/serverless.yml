@@ -20,7 +20,7 @@ custom:
     flags:
       - --window-size=1280,1696
       - --hide-scrollbars
-      - --headless
+      # - --headless
 
 package:
   exclude:
