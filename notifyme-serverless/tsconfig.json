@@ -1,20 +1,15 @@
 {
   "compilerOptions": {
-    "lib": ["es2017", "dom"],
-    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "lib": ["esnext"],
+    "module": "commonjs",
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "outDir": "lib",
     "sourceMap": true,
-    "target": "es2017",
-    "outDir": "lib"
+    "target": "esnext"
   },
-  "include": ["./**/*.ts"],
-  "exclude": [
-    "node_modules/**/*",
-    ".serverless/**/*",
-    ".webpack/**/*",
-    "_warmup/**/*",
-    ".vscode/**/*"
-  ]
+  "exclude": ["node_modules"]
 }
