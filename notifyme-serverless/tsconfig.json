@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
+    "strict": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "lib": ["esnext"],
+    "lib": ["esnext", "dom"],
     "module": "commonjs",
     "moduleResolution": "node",
     "noUnusedLocals": true,

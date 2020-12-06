@@ -18,9 +18,10 @@ export async function register(scrapers: string[]) {
 
   Promise.all(scrapers.map(async (scraper) => {
     const module = await import(path.resolve(__dirname, scraper));
-    await module.default(browser);
+    return await module.default(browser);
   }))
-  .then(async () => {
+  .then(async (result) => {
+    console.log('------------>', JSON.stringify(result, null, 2));
     await browser.close();
   })
   .catch((error) => {
