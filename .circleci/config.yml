@@ -1,7 +1,20 @@
 version: 2.1
-orbs:
-  node: circleci/node@3.0.0
-workflows:
-  node-tests:
-    jobs:
-      - node/test
+  orbs:
+    serverless: circleci/serverless-framework@x.y
+    aws-cli: circleci/aws-cli@x.y
+  jobs:
+    deploy:
+      executor: serverless/default
+      steps:
+        - checkout
+        - aws-cli/setup
+        - serverless/setup:
+            app-name: notify-me
+            org-name: circleci
+        - run:
+            name: deploy
+            command: serverless deploy -v
+  workflows:
+    deploy:
+      jobs:
+        - deploy
