@@ -16,13 +16,13 @@ export async function register(scrapers: string[]) {
     browserWSEndpoint: chrome.endpoint,
   });
 
-  Promise.all(scrapers.map(async (scraper) => {
+  return Promise.all(scrapers.map(async (scraper) => {
     const module = await import(path.resolve(__dirname, scraper));
     return await module.default(browser);
   }))
   .then(async (result) => {
-    console.log('------------>', JSON.stringify(result, null, 2));
     await browser.close();
+    return result;
   })
   .catch((error) => {
     logger.error('Error has occurred while register scrapers', error);

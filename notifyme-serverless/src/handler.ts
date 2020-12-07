@@ -9,8 +9,8 @@ dotenv.config({
   path: dotenvPath,
 });
 
-export const notify: Handler = (event: any, context: Context) => {
-  register([Scrapers.PS]);
+export async function notify(event: any, context: Context): Handler {
+  const result = await register([Scrapers.PS]);
 
-  return Promise.resolve(message.success({ message: 'test' }));
+  return Promise.resolve(message.success(result));
 };

@@ -22,7 +22,7 @@ custom:
       - --hide-scrollbars
       - --no-sandbox
       - --auto-open-devtools-for-tabs
-      # - --headless
+      - --headless
 
 package:
   exclude:
