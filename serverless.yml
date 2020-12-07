@@ -7,8 +7,6 @@ provider:
     # Enable gzip compression for responses > 1 KB
     minimumCompressionSize: 1024
     shouldStartNameWithService: true
-  environment:
-    NODE_ENV: dev
 
 plugins:
   - serverless-plugin-typescript
