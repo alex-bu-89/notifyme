@@ -2,6 +2,7 @@ service: notify-me
 
 provider:
   name: aws
+  region: eu-central-1
   runtime: nodejs12.x
   apiGateway:
     # Enable gzip compression for responses > 1 KB
