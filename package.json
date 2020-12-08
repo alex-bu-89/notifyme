@@ -15,12 +15,9 @@
     "lint"
   ],
   "dependencies": {
-    "@serverless-chrome/lambda": "^1.0.0-57.2",
+    "chrome-aws-lambda": "^5.5.0",
     "dotenv": "^8.2.0",
-    "chrome-launcher": "^0.13.4",
     "puppeteer": "^5.5.0",
-    "serverless-plugin-chrome": "^1.0.0-55.3",
-    "superagent": "^6.1.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {

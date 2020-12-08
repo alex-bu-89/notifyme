@@ -4,6 +4,8 @@ provider:
   name: aws
   region: eu-central-1
   runtime: nodejs12.x
+  environment:
+    NODE_ENV: dev
   apiGateway:
     # Enable gzip compression for responses > 1 KB
     minimumCompressionSize: 1024
@@ -12,16 +14,16 @@ provider:
 plugins:
   - serverless-plugin-typescript
   - serverless-offline
-  - serverless-plugin-chrome
+  # - serverless-plugin-chrome
 
-custom:
-  chrome:
-    flags:
-      - --window-size=1280,1696
-      - --hide-scrollbars
-      - --no-sandbox
-      - --auto-open-devtools-for-tabs
-      - --headless
+# custom:
+#   chrome:
+#     flags:
+#       - --window-size=1280,1696
+#       - --hide-scrollbars
+#       - --no-sandbox
+#       - --auto-open-devtools-for-tabs
+#       - --headless
 
 package:
   exclude:

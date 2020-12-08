@@ -1,4 +1,4 @@
-    
+
 {
   "extends": ["tslint-config-airbnb"],
   "indent": [
@@ -6,6 +6,9 @@
     "tabs",
     2
   ],
+  "rules": {
+    "import-name": false
+  },
   "linterOptions": {
     "exclude": [
       "tests/*books.mock.ts"

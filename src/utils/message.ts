@@ -10,11 +10,11 @@ function bodyToString(
 ) {
   return {
     statusCode: c,
-    body: JSON.stringify({
+    body: {
       code: c,
       message: m,
       data: d,
-    }),
+    },
   };
 }
 
