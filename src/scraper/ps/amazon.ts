@@ -28,6 +28,8 @@ async function isAvailable(page): Promise<boolean> {
  * @param browser
  */
 export default async function run(pageData, browser) {
+  logger.info('Start Amazon scraper');
+
   return await Promise.all(
     pageData.urls.map(async (url: string) => {
       const page = await browser.newPage();

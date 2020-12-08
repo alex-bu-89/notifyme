@@ -37,7 +37,7 @@ functions:
   notify:
     handler: src/handler.notify
     memorySize: 1536
-    timeout: 30
+    timeout: 90
     events:
       - http:
           path: notify

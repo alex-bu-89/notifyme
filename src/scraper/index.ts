@@ -10,6 +10,8 @@ export enum Scrapers {
 }
 
 export async function register(scrapers: string[]) {
+  logger.info(`Start scraping: ${JSON.stringify(scrapers)}`);
+
   const browser = await chromium.puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
@@ -17,6 +19,9 @@ export async function register(scrapers: string[]) {
     headless: true,
     ignoreHTTPSErrors: true,
   });
+
+  const version = await browser.version();
+  logger.info(`Running browser: ${version}`);
 
   return Promise.all(scrapers.map(async (scraper) => {
     const module = await import(path.resolve(__dirname, scraper));

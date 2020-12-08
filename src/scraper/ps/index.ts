@@ -17,6 +17,8 @@ const pages: Page[] = [
 ];
 
 export default async function run(browser) {
+  logger.info('Start PS scraper');
+
   return Promise.all(
     pages.map(async (page) => {
       const module = await import(path.resolve(__dirname, page.name));
