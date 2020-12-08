@@ -9,7 +9,7 @@ jobs:
   test:
     executor:
       name: node/default
-      lts: true
+      tag: '12.20.0'
     steps:
       - checkout
       - node/install-packages
