@@ -9,6 +9,8 @@ dotenv.config({
   path: dotenvPath,
 });
 
+console.log('------------> DEBUG', process.env.DEBUG);
+
 export async function notify(event: any, context: Context): Handler {
   const result = await register([Scrapers.PS]);
 
