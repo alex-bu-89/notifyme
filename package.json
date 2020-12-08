@@ -9,7 +9,7 @@
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "local": "serverless offline",
     "deploy": "serverless deploy",
-    "test": ""
+    "test": "echo \"write tests\""
   },
   "pre-commit": [
     "lint"
