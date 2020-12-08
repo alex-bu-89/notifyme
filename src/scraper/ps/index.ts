@@ -1,11 +1,12 @@
 import path from 'path';
+import { Browser } from 'puppeteer';
 import logger from '../../utils/logger';
-import { Page } from '../types';
+import { PageDto } from '../types';
 
 // @TODO fix missing files with dynamic imports
 import './amazon';
 
-const pages: Page[] = [
+const pages: PageDto[] = [
   {
     name: 'amazon',
     urls: [
@@ -16,9 +17,7 @@ const pages: Page[] = [
   },
 ];
 
-export default async function run(browser) {
-  logger.info('Start PS scraper');
-
+export default async function run(browser: Browser) {
   return Promise.all(
     pages.map(async (page) => {
       const module = await import(path.resolve(__dirname, page.name));

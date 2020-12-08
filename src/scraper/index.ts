@@ -1,5 +1,6 @@
 import path from 'path';
 import chromium from 'chrome-aws-lambda';
+import { Browser } from 'puppeteer';
 import logger from '../utils/logger';
 
 // @TODO fix missing files with dynamic imports
@@ -12,7 +13,7 @@ export enum Scrapers {
 export async function register(scrapers: string[]) {
   logger.info(`Start scraping: ${JSON.stringify(scrapers)}`);
 
-  const browser = await chromium.puppeteer.launch({
+  const browser: Browser = await chromium.puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
     executablePath: await chromium.executablePath,
