@@ -12,12 +12,13 @@ export enum Scrapers {
 
 export async function register(scrapers: string[]) {
   logger.info(`Start scraping: ${JSON.stringify(scrapers)}`);
+  logger.info(`process.env.HEADLESS: ${process.env.HEADLESS} ${typeof process.env.HEADLESS}`);
 
   const browser: Browser = await chromium.puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
     executablePath: await chromium.executablePath,
-    headless: true,
+    headless: process.env.HEADLESS === 'false' ? false : true,
     ignoreHTTPSErrors: true,
   });
 

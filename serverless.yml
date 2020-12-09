@@ -14,16 +14,6 @@ provider:
 plugins:
   - serverless-plugin-typescript
   - serverless-offline
-  # - serverless-plugin-chrome
-
-# custom:
-#   chrome:
-#     flags:
-#       - --window-size=1280,1696
-#       - --hide-scrollbars
-#       - --no-sandbox
-#       - --auto-open-devtools-for-tabs
-#       - --headless
 
 package:
   exclude:
