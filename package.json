@@ -24,6 +24,7 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.64",
     "@types/dotenv-safe": "^8.1.1",
+    "@types/node-telegram-bot-api": "^0.50.4",
     "@types/puppeteer": "^5.4.1",
     "cross-env": "^7.0.3",
     "rimraf": "^3.0.2",
