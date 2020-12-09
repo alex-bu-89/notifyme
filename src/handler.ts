@@ -3,10 +3,10 @@ import dotenv from 'dotenv';
 import path from 'path';
 import message from './utils/message';
 import logger from './utils/logger';
-import Scraper, { Scrapers } from './scraper/';
+import Scraper from './scraper/';
+import Notifier from './notifier/';
 
 const dotenvPath = path.join(__dirname, '../', 'config/.env');
-console.log('------------>', dotenvPath);
 const result = dotenv.config({
   path: dotenvPath,
 });
@@ -16,7 +16,8 @@ if (result.error) {
 }
 
 export async function notify() {
-  const result = await Scraper.register([Scrapers.PS]);
-
+  const result = await Scraper.register([Scraper.scrapers.PS]);
+  logger.info('RESULT', result);
+  Notifier.register([Notifier.clients.TELEGRAM], 'Hello world');
   return message.success(result as object);
 }

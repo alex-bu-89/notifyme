@@ -17,11 +17,9 @@ plugins:
 
 package:
   exclude:
-    - config/.env.stg
-    - config/.env.pro
     - node_modules/puppeteer/.local-chromium/**
   include:
-    - config/.env.dev
+    - config/.env
 
 functions:
   notify:
