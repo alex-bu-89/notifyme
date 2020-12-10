@@ -35,7 +35,7 @@ jobs:
           provider: AWS
           app-name: notify-me
           org-name: circleci
-      # - create-env-file
+      - create-env-file
       - run:
           name: Check .env file exists
           command: |
@@ -45,9 +45,9 @@ jobs:
               echo "$envfile does not exist"
               exit 1
             fi
-      # - run:
-      #     name: deploy
-      #     command: serverless deploy -v
+      - run:
+          name: deploy
+          command: serverless deploy -v
 
 workflows:
   test_and_deploy:
