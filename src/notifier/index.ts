@@ -47,10 +47,10 @@ export function createMessages(data: ScraperResultDto[]) {
   return messages;
 }
 
-export function register(clients: string[], message: string): Promise<[]> {
+export function register(clients: string[], message: string, silently?: boolean): Promise<[]> {
   return Promise.all(clients.map(async (client) => {
     const module = await import(path.resolve(__dirname, client));
-    return await module.default(message);
+    return await module.default(message, silently);
   }))
   .then(async (result) => {
     return result as [];
