@@ -27,7 +27,7 @@ functions:
     memorySize: 1536
     timeout: 30
     events:
-      - schedule: cron(5 * * * * *)
+      - schedule: rate(5 minutes)
       - http:
           path: notify
           method: get
