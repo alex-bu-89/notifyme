@@ -2,6 +2,7 @@ import path from 'path';
 import chromium from 'chrome-aws-lambda';
 import { Browser } from 'puppeteer';
 import logger from '../utils/logger';
+import { ScraperResultDto } from './types.d';
 
 // @TODO fix missing files with dynamic imports
 import './ps';
@@ -26,7 +27,10 @@ export async function register(scrapers: string[]) {
 
   return Promise.all(scrapers.map(async (scraper) => {
     const module = await import(path.resolve(__dirname, scraper));
-    return await module.default(browser);
+    const scraperResult: ScraperResultDto[] = await module.default(browser);
+    return {
+      [scraper]: scraperResult,
+    };
   }))
   .then(async (result) => {
     await browser.close();

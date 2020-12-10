@@ -18,7 +18,7 @@ if (result.error) {
 export async function notify() {
   const result = await Scraper.register([Scraper.scrapers.PS]);
   // @TOTO weird result structure
-  console.log('------------>', JSON.stringify(result, null, 2));
-  Notifier.register([Notifier.clients.TELEGRAM], 'Hello world');
+  await Notifier.register([Notifier.clients.TELEGRAM], 'Hello world');
+  logger.info(`Result is: ${JSON.stringify(result, null, 2)}`);
   return message.success(result as object);
 }

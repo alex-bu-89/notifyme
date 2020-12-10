@@ -1,4 +1,5 @@
 import TelegramBot from 'node-telegram-bot-api';
+import logger from '../utils/logger';
 
 export default async function run(message: string) {
   const chatId = process.env.CHAT_ID;
@@ -8,5 +9,9 @@ export default async function run(message: string) {
   if (!chatId) throw new Error(`process.env.CHAT_ID is required; chatId:${chatId}`);
 
   const bot = new TelegramBot(token, { polling: false });
-  bot.sendMessage(chatId, message);
+  await bot.sendMessage(chatId, message);
+  logger.info('Telegram message sent', {
+    chatId,
+    message,
+  });
 }

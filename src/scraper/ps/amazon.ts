@@ -1,6 +1,6 @@
 
 import { Browser, Page } from 'puppeteer';
-import { PageDto } from '../types.d';
+import { PageDto, ScraperResultDto } from '../types.d';
 // import logger from '../../utils/logger';
 
 /**
@@ -30,7 +30,7 @@ async function isAvailable(page: Page): Promise<boolean> {
  * @param pageData
  * @param browser
  */
-export default async function run(pageDto: PageDto, browser: Browser) {
+export default async function run(pageDto: PageDto, browser: Browser): Promise<ScraperResultDto[]> {
   return await Promise.all(
     pageDto.urls.map(async (url: string) => {
       const page = await browser.newPage();
@@ -44,7 +44,7 @@ export default async function run(pageDto: PageDto, browser: Browser) {
 
       // cart button exist
       const available = await isAvailable(page);
-      const result = {
+      const result: ScraperResultDto = {
         isAvailable: available,
         page: url,
       };
