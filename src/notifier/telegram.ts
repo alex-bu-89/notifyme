@@ -9,9 +9,8 @@ export default async function run(message: string) {
   if (!chatId) throw new Error(`process.env.CHAT_ID is required; chatId:${chatId}`);
 
   const bot = new TelegramBot(token, { polling: false });
-  await bot.sendMessage(chatId, message);
-  logger.info('Telegram message sent', {
-    chatId,
-    message,
-  });
+  const result = await bot.sendMessage(chatId, message);
+  logger.info('Telegram message sent', { chatId, msg: message });
+
+  return result;
 }
