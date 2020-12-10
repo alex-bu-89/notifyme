@@ -6,7 +6,7 @@ export interface PageDto {
 interface ScraperPageDto {
   isAvailable: boolean;
   page: string;
-  title: string
+  title: string;
 }
 
 export interface ScraperItemDto {

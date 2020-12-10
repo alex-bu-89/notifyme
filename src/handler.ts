@@ -18,11 +18,11 @@ if (result.error) {
 export async function notify() {
   const result = await Scraper.register([Scraper.scrapers.PS]);
   const msgs = Notifier.createMessages(result);
-  console.log('------------>', msgs);
+
   await Promise.all(msgs.map(async (msg) => {
     await Notifier.register([Notifier.clients.TELEGRAM], msg);
   }));
 
-  logger.info(`Result is: ${JSON.stringify(result, null, 2)}`);
+  logger.info(`Result: ${JSON.stringify(result)}`);
   return responseUtil.success(result as object);
 }
