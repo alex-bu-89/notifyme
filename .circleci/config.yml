@@ -37,8 +37,14 @@ jobs:
           org-name: circleci
       - create-env-file
       - run:
-          name: test-.env
-          command: cat ./config/.env
+          name: Check .env file exists
+          command: |
+            envfile=./config/.env
+            if [ ! -f "$envfile" ]
+            then
+              echo "$envfile does not exist"
+              exit 1
+            fi
       # - run:
       #     name: deploy
       #     command: serverless deploy -v
