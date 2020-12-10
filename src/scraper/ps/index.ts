@@ -1,7 +1,7 @@
 import path from 'path';
 import { Browser } from 'puppeteer';
 import logger from '../../utils/logger';
-import { PageDto, ScraperDto, ScraperResultDto } from '../types';
+import { PageDto, ScraperItemDto, ScraperPageDto } from '../types';
 
 // @TODO fix missing files with dynamic imports
 import './amazon';
@@ -17,12 +17,12 @@ const pages: PageDto[] = [
   },
 ];
 
-export default async function run(browser: Browser): Promise<ScraperDto[]>  {
+export default async function run(browser: Browser): Promise<ScraperItemDto[]>  {
   return Promise.all(
     pages.map(async (page) => {
       const module = await import(path.resolve(__dirname, page.name));
-      const pageResult: ScraperResultDto[] = await module.default(page, browser);
-      const result: ScraperDto = {
+      const pageResult: ScraperPageDto[] = await module.default(page, browser);
+      const result: ScraperItemDto = {
         name: page.name,
         data: pageResult,
       };

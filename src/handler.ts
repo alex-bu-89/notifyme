@@ -1,7 +1,7 @@
 // import { TEvent, Context } from 'aws-lambda';
 import dotenv from 'dotenv';
 import path from 'path';
-import message from './utils/message';
+import responseUtil from './utils/message';
 import logger from './utils/logger';
 import Scraper from './scraper/';
 import Notifier from './notifier/';
@@ -17,7 +17,12 @@ if (result.error) {
 
 export async function notify() {
   const result = await Scraper.register([Scraper.scrapers.PS]);
-  await Notifier.register([Notifier.clients.TELEGRAM], 'Hello world');
+  const msgs = Notifier.createMessages(result);
+  console.log('------------>', msgs);
+  await Promise.all(msgs.map(async (msg) => {
+    await Notifier.register([Notifier.clients.TELEGRAM], msg);
+  }));
+
   logger.info(`Result is: ${JSON.stringify(result, null, 2)}`);
-  return message.success(result as object);
+  return responseUtil.success(result as object);
 }

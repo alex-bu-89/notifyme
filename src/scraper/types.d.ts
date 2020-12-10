@@ -1,16 +1,19 @@
-import { Scrapers } from '.';
-
 export interface PageDto {
   name: string;
   urls: string[];
 }
 
-interface ScraperResultDto {
+interface ScraperPageDto {
   isAvailable: boolean;
   page: string;
+  title: string
 }
 
-export interface ScraperDto {
+export interface ScraperItemDto {
   name: string;
-  data: ScraperResultDto[];
+  data: ScraperPageDto[];
+}
+export interface ScraperResultDto {
+  name: string;
+  result: ScraperItemDto[];
 }
