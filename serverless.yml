@@ -14,6 +14,7 @@ provider:
 plugins:
   - serverless-plugin-typescript
   - serverless-offline
+  - serverless-dotenv-plugin
 
 package:
   exclude:
@@ -27,7 +28,7 @@ functions:
     memorySize: 1536
     timeout: 30
     events:
-      - schedule: cron(*/1 * * 1 ? 2020)
+      - schedule: cron(*/1 * * 12 ? 2020)
       - http:
           path: notify
           method: get

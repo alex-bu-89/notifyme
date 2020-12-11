@@ -7,11 +7,11 @@ import { ScraperItemDto, ScraperResultDto } from './types.d';
 // @TODO fix missing files with dynamic imports
 import './ps';
 
-export enum Scrapers {
+enum Scrapers {
   PS = 'ps',
 }
 
-export async function register(scrapers: string[]): Promise<ScraperResultDto[]> {
+async function scrape(scrapers: string[]): Promise<ScraperResultDto[]> {
   logger.info(`Start scraping: ${JSON.stringify(scrapers)}`);
 
   const browser: Browser = await chromium.puppeteer.launch({
@@ -37,6 +37,7 @@ export async function register(scrapers: string[]): Promise<ScraperResultDto[]> 
   }))
   .then(async (result) => {
     await browser.close();
+    logger.info(`Result: ${JSON.stringify(result)}`);
     return result;
   })
   .catch((error) => {
@@ -46,6 +47,6 @@ export async function register(scrapers: string[]): Promise<ScraperResultDto[]> 
 }
 
 export default {
-  register,
+  scrape,
   scrapers: Scrapers,
 };

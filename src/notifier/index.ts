@@ -1,7 +1,7 @@
 import path from 'path';
 import logger from '../utils/logger';
 import { ScraperResultDto, ScraperItemDto } from '../scraper/types.d';
-import { Scrapers } from '../scraper/';
+import Scraper from '../scraper/';
 
 import './telegram';
 
@@ -34,7 +34,7 @@ export function createMessages(data: ScraperResultDto[]) {
 
   data.forEach((scraper) => {
     switch (scraper.name) {
-      case Scrapers.PS:
+      case Scraper.scrapers.PS:
         messages.push(...createPSMessages(scraper.result));
         break;
 
@@ -47,7 +47,7 @@ export function createMessages(data: ScraperResultDto[]) {
   return messages;
 }
 
-export function register(clients: string[], message: string, silently?: boolean): Promise<[]> {
+export function notify(clients: string[], message: string, silently?: boolean): Promise<[]> {
   return Promise.all(clients.map(async (client) => {
     const module = await import(path.resolve(__dirname, client));
     return await module.default(message, silently);
@@ -62,7 +62,7 @@ export function register(clients: string[], message: string, silently?: boolean)
 }
 
 export default {
-  register,
+  notify,
   createMessages,
   clients: Clients,
 };
