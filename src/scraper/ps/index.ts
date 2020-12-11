@@ -30,16 +30,6 @@ const pages: PageDto[] = [
     ],
   },
   {
-    name: 'mediamarkt-saturn',
-    urls: [
-      'https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-2661938.html',
-      'https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-digital-edition-2661939.html',
-      // 'https://www.mediamarkt.de/de/product/_sony-dualsense%E2%84%A2-2681392.html',
-      'https://www.saturn.de/de/product/_sony-playstation%C2%AE5-2661938.html',
-      'https://www.saturn.de/de/product/_sony-playstation%C2%AE5-digital-edition-2661939.html',
-    ],
-  },
-  {
     name: 'gamestop',
     urls: [
       'https://www.gamestop.de/ps5',

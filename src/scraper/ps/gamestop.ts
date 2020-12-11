@@ -42,6 +42,7 @@ export default async function run(pageDto: PageDto, browser: Browser): Promise<S
         page: url,
       };
 
+      await page.close();
       return result;
     }),
   );

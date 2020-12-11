@@ -1,5 +1,7 @@
 
 import { Browser, Page } from 'puppeteer';
+import userAgent from 'user-agents';
+
 import { PageDto, ScraperPageDto } from '../types.d';
 import { sendScreenshot } from '../../utils/telegramBot';
 
@@ -33,31 +35,64 @@ async function handleCookie(page: Page) {
  * @param browser
  */
 export default async function run(pageDto: PageDto, browser: Browser): Promise<ScraperPageDto[]> {
-  return await Promise.all(
-    pageDto.urls.map(async (url: string) => {
-      const page = await browser.newPage();
-      await page.goto(url, { waitUntil: 'networkidle0' });
+  const result: ScraperPageDto[] = [];
 
-      const title = await page.evaluate(() => document.title);
-      // logger.info(`Page title: ${title}`);
+  for (let i = 0; i < pageDto.urls.length; i++) {
+    const url: string = pageDto.urls[i];
 
-      // close cookie popups
-      await handleCookie(page);
+    const page = await browser.newPage();
+    await page.setUserAgent(userAgent.toString());
 
-      // screenshot debugging
-      if (process.env.DEBUG && process.env.DEBUG.includes(pageDto.name)) {
-        await sendScreenshot(page);
-      }
+    await page.goto(url, { waitUntil: 'networkidle0' });
 
-      // cart button exist
-      const available = await isAvailable(page);
-      const result: ScraperPageDto = {
-        title,
-        isAvailable: available,
-        page: url,
-      };
+    const title = await page.evaluate(() => document.title);
+    // logger.info(`Page title: ${title}`);
 
-      return result;
-    }),
-  );
+    // close cookie popups
+    await handleCookie(page);
+
+    // screenshot debugging
+    if (process.env.DEBUG && process.env.DEBUG.includes(pageDto.name)) {
+      await sendScreenshot(page);
+    }
+
+    // cart button exist
+    const available = await isAvailable(page);
+    result.push({
+      title,
+      isAvailable: available,
+      page: url,
+    });
+
+    await page.close();
+  }
+
+  return Promise.resolve(result);
+  // return await Promise.all(
+  //   pageDto.urls.map(async (url: string) => {
+  //     const page = await browser.newPage();
+  //     await page.goto(url, { waitUntil: 'networkidle0' });
+
+  //     const title = await page.evaluate(() => document.title);
+  //     // logger.info(`Page title: ${title}`);
+
+  //     // close cookie popups
+  //     await handleCookie(page);
+
+  //     // screenshot debugging
+  //     if (process.env.DEBUG && process.env.DEBUG.includes(pageDto.name)) {
+  //       await sendScreenshot(page);
+  //     }
+
+  //     // cart button exist
+  //     const available = await isAvailable(page);
+  //     const result: ScraperPageDto = {
+  //       title,
+  //       isAvailable: available,
+  //       page: url,
+  //     };
+
+  //     return result;
+  //   }),
+  // );
 }
