@@ -74,7 +74,7 @@ export function notify(
     clients.map(async (client) => {
       const module = await import(path.resolve(__dirname, client));
       return await module.default(message, opt);
-    })
+    }),
   )
     .then(async (result) => {
       return result as [];

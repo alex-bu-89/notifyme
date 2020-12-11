@@ -3,14 +3,14 @@
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
+    "lib": ["es2019", "dom"],
     "module": "commonjs",
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": ".build",
     "sourceMap": true,
-    "target": "esnext"
+    "target": "es2019"
   },
   "exclude": ["node_modules"]
 }

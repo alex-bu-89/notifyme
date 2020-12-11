@@ -6,6 +6,7 @@ provider:
   runtime: nodejs12.x
   environment:
     NODE_ENV: dev
+    DEBUG: mediamarkt-saturn
   apiGateway:
     # Enable gzip compression for responses > 1 KB
     minimumCompressionSize: 1024
@@ -25,9 +26,9 @@ functions:
   notify:
     handler: src/handler.notify
     memorySize: 1536
-    timeout: 30
+    timeout: 60
     events:
-      - schedule: cron(*/3 * * 12 ? 2020)
+      - schedule: cron(*/5 * * 12 ? 2020)
       - http:
           path: notify
           method: get

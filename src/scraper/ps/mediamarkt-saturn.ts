@@ -1,7 +1,7 @@
 
 import { Browser, Page } from 'puppeteer';
 import { PageDto, ScraperPageDto } from '../types.d';
-// import logger from '../../utils/logger';
+import { sendScreenshot } from '../../utils/telegramBot';
 
 /**
  * Is product available
@@ -18,7 +18,9 @@ async function isAvailable(page: Page): Promise<boolean> {
  * Handles cookie popup
  */
 async function handleCookie(page: Page) {
-  const cookieBtn = '.privacy-layer__ctas';
+  const cookieBtn = '#privacy-layer-accept-all-button';
+
+  await page.waitForSelector(cookieBtn, { visible: true });
 
   if (await page.$(cookieBtn) !== null) {
     await page.click(cookieBtn);
@@ -43,6 +45,10 @@ export default async function run(pageDto: PageDto, browser: Browser): Promise<S
 
       // close cookie popups
       await handleCookie(page);
+
+      if (process.env.DEBUG && process.env.DEBUG.includes(pageDto.name)) {
+        await sendScreenshot(page);
+      }
 
       // cart button exist
       const available = await isAvailable(page);
