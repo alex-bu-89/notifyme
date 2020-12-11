@@ -1,5 +1,5 @@
 import { createLogger, format, transports } from 'winston';
-console.log('------------>', process.env.LOG_LEVEL);
+
 const logger = createLogger({
   level: process.env.LOG_LEVEL || 'info',
   format: format.combine(

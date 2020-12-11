@@ -37,7 +37,7 @@ async function scrape(scrapers: string[]): Promise<ScraperResultDto[]> {
   }))
   .then(async (result) => {
     await browser.close();
-    logger.debug(`Result: ${JSON.stringify(result)}`);
+    logger.info(`${JSON.stringify(result)}`);
     return result;
   })
   .catch((error) => {

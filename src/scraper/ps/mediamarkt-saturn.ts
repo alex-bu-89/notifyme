@@ -1,6 +1,5 @@
 
 import { Browser, Page } from 'puppeteer';
-import { bot, chatId } from '../../utils/telegramBot';
 import { PageDto, ScraperPageDto } from '../types.d';
 // import logger from '../../utils/logger';
 
@@ -9,35 +8,23 @@ import { PageDto, ScraperPageDto } from '../types.d';
  * @param page
  */
 async function isAvailable(page: Page): Promise<boolean> {
-  return await page.$('#add-to-cart-button') !== null;
+  const cartBtnDisabled = await page.$('#pdp-add-to-cart-button[disabled]');
+  const notAvailableSection = await page.$('div[data-test="pdp-product-not-available"]');
+
+  return cartBtnDisabled === null && notAvailableSection === null;
 }
 
 /**
  * Handles cookie popup
  */
 async function handleCookie(page: Page) {
-  const cookieBtn = 'input[data-cel-widget="sp-cc-accept"]';
-  const cookieBtn2 = '#sp-cc-accept';
+  const cookieBtn = '.privacy-layer__ctas';
+
   if (await page.$(cookieBtn) !== null) {
     await page.click(cookieBtn);
   }
-  if (await page.$(cookieBtn2) !== null) {
-    await page.click(cookieBtn2);
-  }
 
   return await Promise.resolve();
-}
-
-/**
- * Handles cookie popup
- */
-async function sendScreenshot(page: Page) {
-  // create screenshot
-  const rawScreenshot = await page.screenshot({
-    encoding: 'binary',
-  });
-
-  return await bot.sendPhoto(chatId, Buffer.from(rawScreenshot.toString('base64'), 'base64'));
 }
 
 /**
@@ -56,10 +43,6 @@ export default async function run(pageDto: PageDto, browser: Browser): Promise<S
 
       // close cookie popups
       await handleCookie(page);
-
-      // if (false) {
-      //   await sendScreenshot(page);
-      // }
 
       // cart button exist
       const available = await isAvailable(page);

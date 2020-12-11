@@ -5,6 +5,10 @@ import { PageDto, ScraperItemDto, ScraperPageDto } from '../types';
 
 // @TODO fix missing files with dynamic imports
 import './amazon';
+import './mediamarkt-saturn';
+import './gamestop';
+import './mueller';
+import './medimax';
 
 const pages: PageDto[] = [
   {
@@ -13,6 +17,44 @@ const pages: PageDto[] = [
       'https://www.amazon.de/Sony-PlayStation-5-Digital-Edition/dp/B08H98GVK8',
       'https://www.amazon.de/Sony-PlayStation-5-Digital-Edition/dp/B08H93ZRK9?th=1',
       // 'https://www.amazon.de/-/en/dp/B08H9724CC/ref=sr_1_1?dchild=1&keywords=ps5&qid=1607258538&s=videogames&sr=1-1&th=1',
+    ],
+  },
+  {
+    name: 'mediamarkt-saturn',
+    urls: [
+      'https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-2661938.html',
+      'https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-digital-edition-2661939.html',
+      // 'https://www.mediamarkt.de/de/product/_sony-dualsense%E2%84%A2-2681392.html',
+      'https://www.saturn.de/de/product/_sony-playstation%C2%AE5-2661938.html',
+      'https://www.saturn.de/de/product/_sony-playstation%C2%AE5-digital-edition-2661939.html',
+    ],
+  },
+  {
+    name: 'mediamarkt-saturn',
+    urls: [
+      'https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-2661938.html',
+      'https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-digital-edition-2661939.html',
+      // 'https://www.mediamarkt.de/de/product/_sony-dualsense%E2%84%A2-2681392.html',
+      'https://www.saturn.de/de/product/_sony-playstation%C2%AE5-2661938.html',
+      'https://www.saturn.de/de/product/_sony-playstation%C2%AE5-digital-edition-2661939.html',
+    ],
+  },
+  {
+    name: 'gamestop',
+    urls: [
+      'https://www.gamestop.de/ps5',
+    ],
+  },
+  {
+    name: 'mueller',
+    urls: [
+      'https://www.mueller.de/multi-media/playstation-5/',
+    ],
+  },
+  {
+    name: 'medimax',
+    urls: [
+      'https://www.medimax.de/p/1315336/play-station-5-825gb-ssd',
     ],
   },
 ];
