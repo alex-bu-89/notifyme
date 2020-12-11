@@ -20,8 +20,6 @@ async function isAvailable(page: Page): Promise<boolean> {
 async function handleCookie(page: Page) {
   const cookieBtn = '#privacy-layer-accept-all-button';
 
-  await page.waitForSelector(cookieBtn, { visible: true });
-
   if (await page.$(cookieBtn) !== null) {
     await page.click(cookieBtn);
   }
