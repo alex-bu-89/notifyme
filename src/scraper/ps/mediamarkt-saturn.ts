@@ -46,6 +46,7 @@ export default async function run(pageDto: PageDto, browser: Browser): Promise<S
       // close cookie popups
       await handleCookie(page);
 
+      // screenshot debugging
       if (process.env.DEBUG && process.env.DEBUG.includes(pageDto.name)) {
         await sendScreenshot(page);
       }

@@ -1,8 +1,7 @@
 
 import { Browser, Page } from 'puppeteer';
-import { bot, chatId } from '../../utils/telegramBot';
+import { sendScreenshot } from '../../utils/telegramBot';
 import { PageDto, ScraperPageDto } from '../types.d';
-// import logger from '../../utils/logger';
 
 /**
  * Is product available
@@ -29,18 +28,6 @@ async function handleCookie(page: Page) {
 }
 
 /**
- * Handles cookie popup
- */
-async function sendScreenshot(page: Page) {
-  // create screenshot
-  const rawScreenshot = await page.screenshot({
-    encoding: 'binary',
-  });
-
-  return await bot.sendPhoto(chatId, Buffer.from(rawScreenshot.toString('base64'), 'base64'));
-}
-
-/**
  * Start point
  * @param pageData
  * @param browser
@@ -57,9 +44,10 @@ export default async function run(pageDto: PageDto, browser: Browser): Promise<S
       // close cookie popups
       await handleCookie(page);
 
-      // if (false) {
-      //   await sendScreenshot(page);
-      // }
+      // screenshot debugging
+      if (process.env.DEBUG && process.env.DEBUG.includes(pageDto.name)) {
+        await sendScreenshot(page);
+      }
 
       // cart button exist
       const available = await isAvailable(page);
