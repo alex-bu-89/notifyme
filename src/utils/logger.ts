@@ -1,7 +1,7 @@
 import { createLogger, format, transports } from 'winston';
-
+console.log('------------>', process.env.LOG_LEVEL);
 const logger = createLogger({
-  level: 'info',
+  level: process.env.LOG_LEVEL || 'info',
   format: format.combine(
     format.timestamp({
       format: 'YYYY-MM-DD HH:mm:ss',

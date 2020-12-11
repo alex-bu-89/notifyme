@@ -12,7 +12,7 @@ enum Scrapers {
 }
 
 async function scrape(scrapers: string[]): Promise<ScraperResultDto[]> {
-  logger.info(`Start scraping: ${JSON.stringify(scrapers)}`);
+  logger.debug(`Start scraping: ${JSON.stringify(scrapers)}`);
 
   const browser: Browser = await chromium.puppeteer.launch({
     args: chromium.args,
@@ -23,7 +23,7 @@ async function scrape(scrapers: string[]): Promise<ScraperResultDto[]> {
   });
 
   const version = await browser.version();
-  logger.info(`Running browser: ${version}`);
+  logger.debug(`Running browser: ${version}`);
 
   return Promise.all(scrapers.map(async (scraper) => {
     const module = await import(path.resolve(__dirname, scraper));
@@ -37,7 +37,7 @@ async function scrape(scrapers: string[]): Promise<ScraperResultDto[]> {
   }))
   .then(async (result) => {
     await browser.close();
-    logger.info(`Result: ${JSON.stringify(result)}`);
+    logger.debug(`Result: ${JSON.stringify(result)}`);
     return result;
   })
   .catch((error) => {

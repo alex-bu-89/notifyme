@@ -1,6 +1,6 @@
 
 import { Browser, Page } from 'puppeteer';
-import { getBot, getChatId } from '../../utils/telegramBot';
+import { bot, chatId } from '../../utils/telegramBot';
 import { PageDto, ScraperPageDto } from '../types.d';
 // import logger from '../../utils/logger';
 
@@ -32,9 +32,6 @@ async function handleCookie(page: Page) {
  * Handles cookie popup
  */
 async function sendScreenshot(page: Page) {
-  const bot = getBot();
-  const chatId = getChatId();
-
   // create screenshot
   const rawScreenshot = await page.screenshot({
     encoding: 'binary',
