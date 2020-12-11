@@ -6,7 +6,6 @@ provider:
   runtime: nodejs12.x
   environment:
     NODE_ENV: dev
-    DEBUG: mediamarkt-saturn
   apiGateway:
     # Enable gzip compression for responses > 1 KB
     minimumCompressionSize: 1024

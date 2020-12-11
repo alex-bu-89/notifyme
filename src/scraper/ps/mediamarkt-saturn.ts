@@ -10,10 +10,11 @@ import { sendScreenshot } from '../../utils/telegramBot';
  * @param page
  */
 async function isAvailable(page: Page): Promise<boolean> {
+  const cartBtn = await page.$('#pdp-add-to-cart-button');
   const cartBtnDisabled = await page.$('#pdp-add-to-cart-button[disabled]');
   const notAvailableSection = await page.$('div[data-test="pdp-product-not-available"]');
 
-  return cartBtnDisabled === null && notAvailableSection === null;
+  return cartBtn !== null && cartBtnDisabled === null && notAvailableSection === null;
 }
 
 /**

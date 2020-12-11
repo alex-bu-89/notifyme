@@ -27,6 +27,7 @@
     "@types/dotenv-safe": "^8.1.1",
     "@types/node-telegram-bot-api": "^0.50.4",
     "@types/puppeteer": "^5.4.1",
+    "@types/user-agents": "^1.0.0",
     "cross-env": "^7.0.3",
     "rimraf": "^3.0.2",
     "serverless-offline": "^6.8.0",
