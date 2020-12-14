@@ -1,11 +1,16 @@
 import path from 'path';
 import chromium from 'chrome-aws-lambda';
+import puppeteer from 'puppeteer-extra';
+import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import { Browser } from 'puppeteer';
 import logger from '../utils/logger';
 import { ScraperItemDto, ScraperResultDto } from './types.d';
 
 // @TODO fix missing files with dynamic imports
 import './ps';
+
+// Add stealth plugin and use defaults (all tricks to hide puppeteer usage)
+puppeteer.use(StealthPlugin());
 
 enum Scrapers {
   PS = 'ps',
@@ -14,7 +19,7 @@ enum Scrapers {
 async function scrape(scrapers: string[]): Promise<ScraperResultDto[]> {
   logger.debug(`Start scraping: ${JSON.stringify(scrapers)}`);
 
-  const browser: Browser = await chromium.puppeteer.launch({
+  const browser: Browser = await puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
     executablePath: await chromium.executablePath,
