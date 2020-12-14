@@ -45,7 +45,7 @@ export default async function run(pageDto: PageDto, browser: Browser): Promise<S
     await page.setUserAgent(userAgent.toString());
 
     await page.goto(url, { waitUntil: 'networkidle0' });
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(2000);
 
     const title = await page.evaluate(() => document.title);
     // logger.info(`Page title: ${title}`);
