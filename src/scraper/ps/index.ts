@@ -19,16 +19,16 @@ const pages: PageDto[] = [
       // 'https://www.amazon.de/-/en/dp/B08H9724CC/ref=sr_1_1?dchild=1&keywords=ps5&qid=1607258538&s=videogames&sr=1-1&th=1',
     ],
   },
-  {
-    name: 'mediamarkt-saturn',
-    urls: [
-      'https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-2661938.html',
-      'https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-digital-edition-2661939.html',
-      // 'https://www.mediamarkt.de/de/product/_sony-dualsense%E2%84%A2-2681392.html',
-      'https://www.saturn.de/de/product/_sony-playstation%C2%AE5-2661938.html',
-      'https://www.saturn.de/de/product/_sony-playstation%C2%AE5-digital-edition-2661939.html',
-    ],
-  },
+  // {
+  //   name: 'mediamarkt-saturn',
+  //   urls: [
+  //     'https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-2661938.html',
+  //     'https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-digital-edition-2661939.html',
+  //     // 'https://www.mediamarkt.de/de/product/_sony-dualsense%E2%84%A2-2681392.html',
+  //     'https://www.saturn.de/de/product/_sony-playstation%C2%AE5-2661938.html',
+  //     'https://www.saturn.de/de/product/_sony-playstation%C2%AE5-digital-edition-2661939.html',
+  //   ],
+  // },
   {
     name: 'gamestop',
     urls: [

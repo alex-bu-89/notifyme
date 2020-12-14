@@ -28,6 +28,7 @@ functions:
     timeout: 60
     events:
       - schedule: cron(*/5 * * 12 ? 2020)
+        enabled: true
       - http:
           path: notify
           method: get
