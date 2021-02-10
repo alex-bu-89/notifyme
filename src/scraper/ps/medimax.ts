@@ -1,7 +1,7 @@
 
 import { Browser, Page } from 'puppeteer';
 import { PageDto, ScraperPageDto } from '../types.d';
-import { sendScreenshot } from '../../utils/telegramBot';
+// import { sendScreenshot } from '../../utils/telegramBot';
 
 /**
  * Is product available
@@ -26,9 +26,9 @@ export default async function run(pageDto: PageDto, browser: Browser): Promise<S
       const title = await page.evaluate(() => document.title);
 
       // screenshot debugging
-      if (process.env.DEBUG && process.env.DEBUG.includes(pageDto.name)) {
-        await sendScreenshot(page);
-      }
+      // if (process.env.DEBUG && process.env.DEBUG.includes(pageDto.name)) {
+      //   await sendScreenshot(page);
+      // }
 
       // cart button exist
       const available = await isAvailable(page);
