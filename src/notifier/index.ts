@@ -1,12 +1,9 @@
-import path from 'path';
+import * as telegramBot from '../utils/telegramBot';
 import logger from '../utils/logger';
-import TelegramBot from 'node-telegram-bot-api';
 import { ScraperResultDto, ScraperItemDto } from '../scraper/types.d';
 import Scraper from '../scraper/';
 
-import './telegram';
-
-export enum Clients {
+export enum NOTIFIER_CLIENTS {
   TELEGRAM = 'telegram',
 }
 
@@ -68,12 +65,18 @@ export function createMessages(data: ScraperResultDto[]) {
 export function notify(
   clients: string[],
   message: string,
-  opt?: TelegramBot.SendMessageOptions,
+  opt?: any,
 ): Promise<[]> {
   return Promise.all(
     clients.map(async (client) => {
-      const module = await import(path.resolve(__dirname, client));
-      return await module.default(message, opt);
+      switch (client) {
+        case NOTIFIER_CLIENTS.TELEGRAM:
+          telegramBot.sendMessage(message, opt);
+          break;
+
+        default:
+          break;
+      }
     }),
   )
     .then(async (result) => {
@@ -89,5 +92,5 @@ export default {
   notify,
   createMessages,
   createLogMsg,
-  clients: Clients,
+  NOTIFIER_CLIENTS,
 };

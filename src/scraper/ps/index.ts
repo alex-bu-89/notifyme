@@ -29,24 +29,24 @@ const pages: PageDto[] = [
   //     'https://www.saturn.de/de/product/_sony-playstation%C2%AE5-digital-edition-2661939.html',
   //   ],
   // },
-  {
-    name: 'gamestop',
-    urls: [
-      'https://www.gamestop.de/ps5',
-    ],
-  },
-  {
-    name: 'mueller',
-    urls: [
-      'https://www.mueller.de/multi-media/playstation-5/',
-    ],
-  },
-  {
-    name: 'medimax',
-    urls: [
-      'https://www.medimax.de/p/1315336/play-station-5-825gb-ssd',
-    ],
-  },
+  // {
+  //   name: 'gamestop',
+  //   urls: [
+  //     'https://www.gamestop.de/ps5',
+  //   ],
+  // },
+  // {
+  //   name: 'mueller',
+  //   urls: [
+  //     'https://www.mueller.de/multi-media/playstation-5/',
+  //   ],
+  // },
+  // {
+  //   name: 'medimax',
+  //   urls: [
+  //     'https://www.medimax.de/p/1315336/play-station-5-825gb-ssd',
+  //   ],
+  // },
 ];
 
 export default async function run(browser: Browser): Promise<ScraperItemDto[]>  {
