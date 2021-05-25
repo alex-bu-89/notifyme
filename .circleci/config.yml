@@ -49,13 +49,13 @@ jobs:
           name: deploy
           command: serverless deploy -v
 
-workflows:
-  test_and_deploy:
-    jobs:
-      - test
-      - deploy:
-          requires:
-            - test
-          filters:
-            branches:
-              only: master
+# workflows:
+#   test_and_deploy:
+#     jobs:
+#       - test
+#       - deploy:
+#           requires:
+#             - test
+#           filters:
+#             branches:
+#               only: master
